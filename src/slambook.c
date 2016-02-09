@@ -8,6 +8,7 @@
 int
 main(int argc, char **argv)
 {
+    int currIndex = 0;
     char throwaway = 'a';
     struct node *head = malloc(sizeof(struct node));
     head->next = NULL;
@@ -62,7 +63,7 @@ main(int argc, char **argv)
                 }
 
                 if (opt == 1) {
-                    addNode(head);
+                    addNode(head, &currIndex);
                 } else if (opt == 2) {
                     displayNodes(head);
                     updateNode(head, idx);
@@ -72,13 +73,14 @@ main(int argc, char **argv)
                 } else if (opt == 4) {
                     displayNodes(head);
                 } else if (opt == 5) {
+                    freeList(head);
                     return 0;
                 }
 
                 break;
             case EDITOR:
                 if (opt == 1) {
-                    addNode(head);
+                    addNode(head, &currIndex);
                 } else if (opt == 2) {
                     displayNodes(head);
                     printf("Choose index: ");
@@ -88,16 +90,18 @@ main(int argc, char **argv)
                 } else if (opt == 3) {
                     displayNodes(head);
                 } else if (opt == 4) {
+                    freeList(head);
                     return 0;
                 }
 
                 break;
             case AUTHOR:
                 if (opt == 1) {
-                    addNode(head);
+                    addNode(head, &currIndex);
                 } else if (opt == 2) {
                     displayNodes(head);
                 } else if (opt == 3) {
+                    freeList(head);
                     return 0;
                 }
 
@@ -106,6 +110,7 @@ main(int argc, char **argv)
                 if (opt == 1) {
                     displayNodes(head);
                 } else if (opt == 2) {
+                    freeList(head);
                     return 0;
                 }
 

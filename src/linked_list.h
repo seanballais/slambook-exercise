@@ -13,9 +13,10 @@
         struct node *next;
     };
 
-    void addNode(struct node *head);
+    void addNode(struct node *head, int *currIndex);
     void deleteNode(struct node *head, int index);
     void updateNode(struct node *head, int index);
     void displayNodes(struct node *head);
+    void freeList(struct node *head);
 
 #endif

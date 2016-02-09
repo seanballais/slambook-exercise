@@ -1,19 +1,15 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "slambook_info.h"
 #include "slambook_funcs.h"
 
 void
 printEntry(info personInfo)
 {
-    printf("Name: %s", personInfo.name);
-    printf("Nickname: %s", personInfo.nickname);
-    printf("Age: %s", personInfo.age);
+    printf("Name: %s\n", personInfo.name);
+    printf("Nickname: %s\n", personInfo.nickname);
+    printf("Age: %s\n", personInfo.age);
     printf("Facts\n");
-    printf("1) %s", personInfo.fact.fact1);
-    printf("2) %s", personInfo.fact.fact2);
-    printf("3) %s", personInfo.fact.fact3);
+    printf("1) %s\n", personInfo.fact.fact1);
+    printf("2) %s\n", personInfo.fact.fact2);
+    printf("3) %s\n", personInfo.fact.fact3);
     printf("===\n");
 }
 
@@ -24,25 +20,40 @@ getInput(info *personInfo)
 
     printf("Name: ");
     fgets(personInfo->name, sizeof(personInfo->name), stdin);
+    _removeNewline(personInfo->name);
 
     printf("Nickname: ");
     fgets(personInfo->nickname, sizeof(personInfo->nickname), stdin);
+    _removeNewline(personInfo->nickname);
 
     printf("Age: ");
     fgets(personInfo->age, sizeof(personInfo->age), stdin);
+    _removeNewline(personInfo->age);
 
     printf("Facts\n");
 
     printf("Fact 1: ");
     fgets(personInfo->fact.fact1, sizeof(personInfo->fact.fact1), stdin);
+    _removeNewline(personInfo->fact.fact1);
 
     printf("Fact 2: ");
     fgets(personInfo->fact.fact2, sizeof(personInfo->fact.fact2), stdin);
+    _removeNewline(personInfo->fact.fact2);
 
     printf("Fact 3: ");
     fgets(personInfo->fact.fact3, sizeof(personInfo->fact.fact3), stdin);
+    _removeNewline(personInfo->fact.fact3);
 
     printf("Data entered successfully.\n");
+}
+
+void
+_removeNewline(char* input)
+{
+    char *pos;
+    if ((pos = strchr(input, "\n")) != NULL) {
+        *pos = '\0';
+    }
 }
 
 void

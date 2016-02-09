@@ -15,7 +15,7 @@ addNode(struct node *head, int *currIndex)
 }
 
 void
-addNodeFromArray(struct node *head, char str[6][256], int *currIndex)
+addNodeFromArray(struct node *head, char str[][256], int *currIndex)
 {
     struct node *current = head;
     while (current->next != NULL) {

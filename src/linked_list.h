@@ -15,7 +15,7 @@
     };
 
     void addNode(struct node *head, int *currIndex);
-    void addNodeFromArray(struct node *head, char str[6][256], int *currIndex);
+    void addNodeFromArray(struct node *head, char str[][256], int *currIndex);
     void deleteNode(struct node *head, int index);
     void updateNode(struct node *head, int index);
     void displayNodes(struct node *head);

@@ -15,6 +15,25 @@ addNode(struct node *head, int *currIndex)
 }
 
 void
+addNodeFromArray(struct node *head, char str[6][256], int *currIndex)
+{
+    struct node *current = head;
+    while (current->next != NULL) {
+        current = current->next;
+    }
+
+    current->next = malloc(sizeof(struct node));
+    current->next->id = ++(*currIndex);
+    strcpy(current->next->name, str[0]);
+    strcpy(current->next->nickname, str[1]);
+    strcpy(current->next->age, str[2]);
+    strcpy(current->next->fact->fact1, str[3]);
+    strcpy(current->next->fact->fact2, str[4]);
+    strcpy(current->next->fact->fact3, str[5]);
+    current->next->next = NULL;
+}
+
+void
 deleteNode(struct node *head, int index)
 {
     struct node *current = head;

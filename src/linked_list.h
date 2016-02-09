@@ -3,6 +3,7 @@
 
     #include <stdio.h>
     #include <stdlib.h>
+    #include <string.h>
 
     #include "slambook_info.h"
     #include "slambook_funcs.h"
@@ -14,6 +15,7 @@
     };
 
     void addNode(struct node *head, int *currIndex);
+    void addNodeFromArray(struct node *head, char str[6][256], int *currIndex);
     void deleteNode(struct node *head, int index);
     void updateNode(struct node *head, int index);
     void displayNodes(struct node *head);

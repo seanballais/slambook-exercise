@@ -6,7 +6,7 @@
     #include "slambook_info.h"
     #include "linked_list.h"
 
-    void readDataFromFile(FILE *fp, struct node *head);
+    void readDataFromFile(FILE *fp, struct node *head, int *currIndex);
     void saveDataToFile(FILE *fp, struct node *head);
 
 #endif

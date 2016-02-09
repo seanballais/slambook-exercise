@@ -4,6 +4,7 @@
 #include "slambook_info.h"
 #include "linked_list.h"
 #include "slambook_funcs.h"
+#include "file_access.h"
 
 int
 main(int argc, char **argv)
@@ -12,6 +13,9 @@ main(int argc, char **argv)
     char throwaway = 'a';
     struct node *head = malloc(sizeof(struct node));
     head->next = NULL;
+
+    FILE *fp = NULL;
+    readDataFromFile(fp, head, &currIndex);
 
     printf("SLAMBOOK!\n");
     printf("Choose role\n");
@@ -54,12 +58,15 @@ main(int argc, char **argv)
 
                 if (opt == 1) {
                     addNode(head, &currIndex);
+                    saveDataToFile(fp, head);
                 } else if (opt == 2) {
                     displayNodes(head);
                     updateNode(head, idx);
+                    saveDataToFile(fp, head);
                 } else if (opt == 3) {
                     displayNodes(head);
                     deleteNode(head, idx);
+                    saveDataToFile(fp, head);
                 } else if (opt == 4) {
                     displayNodes(head);
                 } else if (opt == 5) {
@@ -71,11 +78,13 @@ main(int argc, char **argv)
             case EDITOR:
                 if (opt == 1) {
                     addNode(head, &currIndex);
+                    saveDataToFile(fp, head);
                 } else if (opt == 2) {
                     displayNodes(head);
                     printf("Choose index: ");
                     scanf("%d", &idx);
                     scanf("%c", &throwaway);
+                    saveDataToFile(fp, head);
                     updateNode(head, idx);
                 } else if (opt == 3) {
                     displayNodes(head);
@@ -88,6 +97,7 @@ main(int argc, char **argv)
             case AUTHOR:
                 if (opt == 1) {
                     addNode(head, &currIndex);
+                    saveDataToFile(fp, head);
                 } else if (opt == 2) {
                     displayNodes(head);
                 } else if (opt == 3) {

@@ -9,7 +9,6 @@ readDataFromFile(FILE *fp, struct node *head, int *currIndex)
 
     fp = fopen("data.txt", "r");
     if (fp == NULL) {
-        perror(fp);
         return;
     } else {
         char line[897];
@@ -24,9 +23,13 @@ readDataFromFile(FILE *fp, struct node *head, int *currIndex)
                 token = strtok(NULL, "|");
                 index++;
             }
+
+            addNodeFromArray(head, info, currIndex);
         }
 
-        addNodeFromArray(head, info, currIndex);
+        fclose(fp);
+        fp = NULL;
+
     }
 }
 
@@ -39,19 +42,18 @@ saveDataToFile(FILE *fp, struct node *head)
 
     fp = fopen("data.txt", "w");
     if (fp == NULL) {
-        perror(fp);
         return;
     } else {
         struct node *current = head;
         while (current != NULL) {
-            if (current != NULL and current->id != 0) {
+            if (current != NULL && current->id != 0) {
                 fprintf(fp, "%s|%s|%s|%s|%s|%s\n",
-                        current->name,
-                        current->nickname,
-                        current->age,
-                        current->fact->fact1,
-                        current->fact->fact2,
-                        current->fact->fact2
+                        current->val.name,
+                        current->val.nickname,
+                        current->val.age,
+                        current->val.fact.fact1,
+                        current->val.fact.fact2,
+                        current->val.fact.fact2
                         );
             }
 
@@ -60,4 +62,5 @@ saveDataToFile(FILE *fp, struct node *head)
     }
 
     fclose(fp);
+    fp = NULL;
 }

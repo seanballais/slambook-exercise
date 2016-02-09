@@ -51,7 +51,7 @@ void
 _removeNewline(char* input)
 {
     char *pos;
-    if ((pos = strchr(input, "\n")) != NULL) {
+    if ((pos = strchr(input, '\n')) != NULL) {
         *pos = '\0';
     }
 }

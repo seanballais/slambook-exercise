@@ -51,6 +51,7 @@ main(int argc, char **argv)
         switch (role) {
             case ADMIN:
                 if (opt == 2 || opt == 3) {
+                    displayNodes(head);
                     printf("Choose index: ");
                     scanf("%d", &idx);
                     scanf("%c", &throwaway);
@@ -60,11 +61,9 @@ main(int argc, char **argv)
                     addNode(head, &currIndex);
                     saveDataToFile(fp, head);
                 } else if (opt == 2) {
-                    displayNodes(head);
                     updateNode(head, idx);
                     saveDataToFile(fp, head);
                 } else if (opt == 3) {
-                    displayNodes(head);
                     deleteNode(head, idx);
                     saveDataToFile(fp, head);
                 } else if (opt == 4) {

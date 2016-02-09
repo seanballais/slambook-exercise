@@ -24,12 +24,12 @@ addNodeFromArray(struct node *head, char str[][256], int *currIndex)
 
     current->next = malloc(sizeof(struct node));
     current->next->id = ++(*currIndex);
-    strcpy(current->next->name, str[0]);
-    strcpy(current->next->nickname, str[1]);
-    strcpy(current->next->age, str[2]);
-    strcpy(current->next->fact->fact1, str[3]);
-    strcpy(current->next->fact->fact2, str[4]);
-    strcpy(current->next->fact->fact3, str[5]);
+    strcpy(current->next->val.name, str[0]);
+    strcpy(current->next->val.nickname, str[1]);
+    strcpy(current->next->val.age, str[2]);
+    strcpy(current->next->val.fact.fact1, str[3]);
+    strcpy(current->next->val.fact.fact2, str[4]);
+    strcpy(current->next->val.fact.fact3, str[5]);
     current->next->next = NULL;
 }
 

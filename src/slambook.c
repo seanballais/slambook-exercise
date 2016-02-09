@@ -13,16 +13,6 @@ main(int argc, char **argv)
     struct node *head = malloc(sizeof(struct node));
     head->next = NULL;
 
-    // Read data from text file
-    /*FILE *fp;
-    fp = fopen("data.txt", "a+");
-    while (getc(fp) != EOF) { // Loop through whole file until EOF
-        char str_buff[256];
-        while (getc(fp) != '\n') { // Loop through whole line until newline
-            strcat(str_buff, getc(fp));
-        }
-    }*/
-
     printf("SLAMBOOK!\n");
     printf("Choose role\n");
     printf("    1) ADMIN\n");

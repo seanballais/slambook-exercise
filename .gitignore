@@ -30,3 +30,7 @@
 
 # Debug files
 *.dSYM/
+
+# Folders and files
+bin/
+data.txt

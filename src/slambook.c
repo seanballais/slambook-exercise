@@ -4,23 +4,18 @@
 #include "slambook_info.h"
 #include "linked_list.h"
 #include "slambook_funcs.h"
+#include "file_access.h"
 
 int
 main(int argc, char **argv)
 {
+    int currIndex = 0;
     char throwaway = 'a';
     struct node *head = malloc(sizeof(struct node));
     head->next = NULL;
 
-    // Read data from text file
-    /*FILE *fp;
-    fp = fopen("data.txt", "a+");
-    while (getc(fp) != EOF) { // Loop through whole file until EOF
-        char str_buff[256];
-        while (getc(fp) != '\n') { // Loop through whole line until newline
-            strcat(str_buff, getc(fp));
-        }
-    }*/
+    FILE *fp = NULL;
+    readDataFromFile(fp, head, &currIndex);
 
     printf("SLAMBOOK!\n");
     printf("Choose role\n");
@@ -56,48 +51,56 @@ main(int argc, char **argv)
         switch (role) {
             case ADMIN:
                 if (opt == 2 || opt == 3) {
+                    displayNodes(head);
                     printf("Choose index: ");
                     scanf("%d", &idx);
                     scanf("%c", &throwaway);
                 }
 
                 if (opt == 1) {
-                    addNode(head);
+                    addNode(head, &currIndex);
+                    saveDataToFile(fp, head);
                 } else if (opt == 2) {
-                    displayNodes(head);
                     updateNode(head, idx);
+                    saveDataToFile(fp, head);
                 } else if (opt == 3) {
-                    displayNodes(head);
                     deleteNode(head, idx);
+                    saveDataToFile(fp, head);
                 } else if (opt == 4) {
                     displayNodes(head);
                 } else if (opt == 5) {
+                    freeList(head);
                     return 0;
                 }
 
                 break;
             case EDITOR:
                 if (opt == 1) {
-                    addNode(head);
+                    addNode(head, &currIndex);
+                    saveDataToFile(fp, head);
                 } else if (opt == 2) {
                     displayNodes(head);
                     printf("Choose index: ");
                     scanf("%d", &idx);
                     scanf("%c", &throwaway);
+                    saveDataToFile(fp, head);
                     updateNode(head, idx);
                 } else if (opt == 3) {
                     displayNodes(head);
                 } else if (opt == 4) {
+                    freeList(head);
                     return 0;
                 }
 
                 break;
             case AUTHOR:
                 if (opt == 1) {
-                    addNode(head);
+                    addNode(head, &currIndex);
+                    saveDataToFile(fp, head);
                 } else if (opt == 2) {
                     displayNodes(head);
                 } else if (opt == 3) {
+                    freeList(head);
                     return 0;
                 }
 
@@ -106,6 +109,7 @@ main(int argc, char **argv)
                 if (opt == 1) {
                     displayNodes(head);
                 } else if (opt == 2) {
+                    freeList(head);
                     return 0;
                 }
 
